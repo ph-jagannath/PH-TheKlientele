@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import AuthNavigator from "./Navigators/AuthNavigator";
+import UserNavigator from "./Navigators/UserNavigator";
+import VenderNavigator from "./Navigators/VenderNavigator";
+// import MainNavigator from "./Navigators/MainNavigator";
+// console.disableYellowBox = true;
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+    };
+  }
+  //   load custom font function
+
+  render() {
+    return <AuthNavigator />;
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
