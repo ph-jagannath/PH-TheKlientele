@@ -4,13 +4,14 @@ import { NavigationContainer } from "@react-navigation/native";
 // import DrawerNavigator from "./navigation/DrawerNavigator";
 import MainNavigator from "./Navigators/MainNavigator";
 import AuthNavigator from "./Navigators/AuthNavigator";
+import UserNavigator from "./Navigators/UserNavigator";
+import VenderNavigator from "./Navigators/VenderNavigator";
 
- const App = () => {
+const App = () => {
   return (
     <NavigationContainer>
-      <AuthNavigator/>
+      <MainNavigator />
     </NavigationContainer>
-    
   );
-}
+};
 export default App;

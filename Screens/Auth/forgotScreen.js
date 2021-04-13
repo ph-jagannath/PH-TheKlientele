@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image, ImageBackground,Alert } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  ImageBackground,
+  Alert,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Input, Overlay, Divider } from "react-native-elements";
 import back from "../../assets/back.png";
@@ -7,7 +14,7 @@ import DatePicker from "react-native-datepicker";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import location from "../../assets/locations.png";
 import global from "../../global";
-import { LinearGradient } from "expo-linear-gradient";
+import GradientButton from "react-native-gradient-buttons";
 
 export default class forgotScreen extends Component {
   static navigationOptions = {
@@ -16,7 +23,7 @@ export default class forgotScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: ""
+      email: "",
     };
   }
   // Validate
@@ -83,7 +90,22 @@ export default class forgotScreen extends Component {
           />
         </View>
         <View>
-          <Button
+          <GradientButton
+            style={{ marginTop: 50, alignSelf: "center" }}
+            text="Reset Password"
+            textStyle={{ fontSize: 16 }}
+            gradientBegin="#0EF700"
+            gradientEnd="#087407"
+            gradientDirection="diagonal"
+            height={50}
+            width={300}
+            radius={40}
+            impact
+            impactStyle="Light"
+            onPressAction={this.handleValidate}
+            // onPress={() => this.props.navigation.navigate("Login")}
+          />
+          {/* <Button
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.buttonStyle}
             // loading={this.state.buttonLoading}
@@ -92,7 +114,7 @@ export default class forgotScreen extends Component {
             TouchableComponent={TouchableOpacity}
             onPress={this.handleValidate}
             // onPress={() => this.props.navigation.navigate("loginScreen")}
-          />
+          /> */}
         </View>
       </View>
     );

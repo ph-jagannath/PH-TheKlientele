@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image ,Alert} from "react-native";
+import { Text, StyleSheet, View, Image, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Input, Overlay, Divider } from "react-native-elements";
 import back from "../../assets/back.png";
@@ -7,12 +7,13 @@ import DatePicker from "react-native-datepicker";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import location from "../../assets/locations.png";
 import global from "../../global";
+import GradientButton from "react-native-gradient-buttons";
 
 export default class signupScreen extends Component {
   static navigationOptions = {
     header: null,
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,18 +21,15 @@ export default class signupScreen extends Component {
       currency: [{ value: "cbvuy", label: "India" }],
       email: "kliemteletest100@mailsac.com",
       password: "12345678",
-  
+
       date: "",
       confirm_Password: "12345678",
-      
     };
   }
   // Validate
   handleValidate = () => {
     if (this.state.userName == "") {
       Alert.alert("Signup Alert", "Please enter  userName");
-     
-  
     } else if (this.state.email == "") {
       Alert.alert("Signup Alert", "Please enter e-mail address ");
     } else if (this.state.email !== "") {
@@ -45,8 +43,7 @@ export default class signupScreen extends Component {
           "Signup Alert",
           "Password field should not be less than 6 characters"
         );
-      } 
-      else {
+      } else {
         // Login(this.state);
         this.handleLogin();
       }
@@ -54,152 +51,171 @@ export default class signupScreen extends Component {
   };
   handleLogin = () => {
     // this.setState({ success: true });
-    this.props.navigation.navigate("User");
+    this.props.navigation.navigate("Login");
   };
   render() {
     return (
       <View style={styles.bgContainer}>
-        <View style={styles.upperContainer}>
-          <View style={{ width: 40 }}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Login")}
-            >
-              <Image
-                source={global.ASSETS.BACK}
-                style={{
-                  width: 20,
-                  height: 26,
-                  alignSelf: "flex-start",
-                  resizeMode: "contain",
-                  shadowColor: "gray",
-                  marginTop: 50,
-                  marginLeft: 22,
-                }}
-              />
-            </TouchableOpacity>
+        <View style={{ flex: 0.85 }}>
+          <View style={styles.upperContainer}>
+            <View style={{ width: 40 }}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Login")}
+              >
+                <Image
+                  source={global.ASSETS.BACK}
+                  style={{
+                    width: 20,
+                    height: 26,
+                    alignSelf: "flex-start",
+                    resizeMode: "contain",
+                    shadowColor: "gray",
+                    marginTop: 50,
+                    marginLeft: 22,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
+          <Text style={styles.accountText}>Create new Account</Text>
+          <KeyboardAwareScrollView>
+            <View style={styles.inputContainer}>
+              {/* email container */}
+
+              <Input
+                label="Full Name"
+                labelStyle={styles.labelText}
+                textContentType="emailAddress"
+                inputContainerStyle={styles.inputFiedContainer}
+                keyboardType="email-address"
+                inputStyle={styles.inputText}
+                // onChangeText={(v) => this.setState({ number: v })}
+                value={this.state.userName}
+              />
+              <View
+                style={{
+                  flexDirection: "row",
+                  // justifyContent: "space-between",
+                  // marginRight: 30,
+                }}
+              >
+                <Input
+                  secureTextEntry={true}
+                  label="Password"
+                  labelStyle={styles.labelText}
+                  textContentType="emailAddress"
+                  inputContainerStyle={styles.inputFiedContainer}
+                  keyboardType="email-address"
+                  inputStyle={styles.inputText}
+                  // onChangeText={(v) => this.setState({ number: v })}
+                  value={this.state.password}
+                />
+                <View style={{ marginLeft: -40 }}>
+                  <Image
+                    source={global.ASSETS.PASSWORD}
+                    style={{
+                      width: 26,
+                      height: 26,
+                      alignSelf: "center",
+                      resizeMode: "contain",
+                      shadowColor: "gray",
+                      marginTop: 28,
+                      // marginLeft: -20,
+                    }}
+                  />
+                </View>
+              </View>
+
+              <Input
+                label="Email"
+                labelStyle={styles.labelText}
+                textContentType="emailAddress"
+                inputContainerStyle={styles.inputFiedContainer}
+                keyboardType="email-address"
+                inputStyle={styles.inputText}
+                // onChangeText={(v) => this.setState({ number: v })}
+                value={this.state.email}
+              />
+              <View
+                style={{
+                  flexDirection: "row",
+                  // justifyContent: "space-between",
+                  // marginRight: 30,
+                }}
+              >
+                <Input
+                  label="Date of Birth"
+                  labelStyle={styles.labelText}
+                  textContentType="emailAddress"
+                  inputContainerStyle={styles.inputFiedContainer}
+                  keyboardType="email-address"
+                  inputStyle={styles.inputText}
+                  // onChangeText={(v) => this.setState({ number: v })}
+                  // value={this.state.number}
+                />
+                <View style={{ marginLeft: -40 }}>
+                  <Image
+                    source={global.ASSETS.CALENDAR}
+                    style={{
+                      width: 26,
+                      height: 26,
+                      alignSelf: "center",
+                      resizeMode: "contain",
+                      shadowColor: "gray",
+                      marginTop: 28,
+                      // marginLeft: -20,
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.locationContainer}>
+                <Input
+                  label="Your Address"
+                  labelStyle={styles.labelText}
+                  textContentType="emailAddress"
+                  inputContainerStyle={styles.inputFiedContainer}
+                  keyboardType="email-address"
+                  inputStyle={styles.inputText}
+                  // onChangeText={(v) => this.setState({ number: v })}
+                  // value={this.state.number}
+                />
+                <View>
+                  <Image
+                    source={location}
+                    style={{
+                      width: 26,
+                      height: 26,
+                      alignSelf: "center",
+                      resizeMode: "contain",
+                      shadowColor: "gray",
+                      marginTop: 28,
+                      marginLeft: -56,
+                    }}
+                  />
+                </View>
+              </View>
+            </View>
+          </KeyboardAwareScrollView>
         </View>
-        <Text style={styles.accountText}>Create new Account</Text>
-        <KeyboardAwareScrollView>
-          <View style={styles.inputContainer}>
-            {/* email container */}
-
-            <Input
-              label="Full Name"
-              labelStyle={styles.labelText}
-              textContentType="emailAddress"
-              inputContainerStyle={styles.inputFiedContainer}
-              keyboardType="email-address"
-              inputStyle={styles.inputText}
-              // onChangeText={(v) => this.setState({ number: v })}
-              // value={this.state.number}
+        <View style={{ flex: 0.15 }}>
+          <View>
+            <GradientButton
+              style={{ marginTop: 10, alignSelf: "center" }}
+              text="Sign up"
+              textStyle={{ fontSize: 16 }}
+              gradientBegin="#0EF700"
+              gradientEnd="#087407"
+              gradientDirection="diagonal"
+              height={50}
+              width={300}
+              radius={26}
+              impact
+              impactStyle="Light"
+              onPressAction={this.handleValidate}
+              // onPress={() => this.props.navigation.navigate("Login")}
             />
-            <View
-              style={{
-                flexDirection: "row",
-                // justifyContent: "space-between",
-                // marginRight: 30,
-              }}
-            >
-              <Input
-                secureTextEntry={true}
-                label="Password"
-                labelStyle={styles.labelText}
-                textContentType="emailAddress"
-                inputContainerStyle={styles.inputFiedContainer}
-                keyboardType="email-address"
-                inputStyle={styles.inputText}
-
-                // onChangeText={(v) => this.setState({ number: v })}
-                // value={this.state.number}
-              />
-              <View style={{ marginLeft: -40 }}>
-                <Image
-                  source={global.ASSETS.PASSWORD}
-                  style={{
-                    width: 26,
-                    height: 26,
-                    alignSelf: "center",
-                    resizeMode: "contain",
-                    shadowColor: "gray",
-                    marginTop: 28,
-                    // marginLeft: -20,
-                  }}
-                />
-              </View>
-            </View>
-
-            <Input
-              label="Email"
-              labelStyle={styles.labelText}
-              textContentType="emailAddress"
-              inputContainerStyle={styles.inputFiedContainer}
-              keyboardType="email-address"
-              inputStyle={styles.inputText}
-              // onChangeText={(v) => this.setState({ number: v })}
-              // value={this.state.number}
-            />
-            <View
-              style={{
-                flexDirection: "row",
-                // justifyContent: "space-between",
-                // marginRight: 30,
-              }}
-            >
-              <Input
-                label="Date of Birth"
-                labelStyle={styles.labelText}
-                textContentType="emailAddress"
-                inputContainerStyle={styles.inputFiedContainer}
-                keyboardType="email-address"
-                inputStyle={styles.inputText}
-                // onChangeText={(v) => this.setState({ number: v })}
-                // value={this.state.number}
-              />
-              <View style={{ marginLeft: -40 }}>
-                <Image
-                  source={global.ASSETS.CALENDAR}
-                  style={{
-                    width: 26,
-                    height: 26,
-                    alignSelf: "center",
-                    resizeMode: "contain",
-                    shadowColor: "gray",
-                    marginTop: 28,
-                    // marginLeft: -20,
-                  }}
-                />
-              </View>
-            </View>
-
-            <View style={styles.locationContainer}>
-              <Input
-                label="Your Address"
-                labelStyle={styles.labelText}
-                textContentType="emailAddress"
-                inputContainerStyle={styles.inputFiedContainer}
-                keyboardType="email-address"
-                inputStyle={styles.inputText}
-                // onChangeText={(v) => this.setState({ number: v })}
-                // value={this.state.number}
-              />
-              <View>
-                <Image
-                  source={location}
-                  style={{
-                    width: 26,
-                    height: 26,
-                    alignSelf: "center",
-                    resizeMode: "contain",
-                    shadowColor: "gray",
-                    marginTop: 28,
-                    marginLeft: -56,
-                  }}
-                />
-              </View>
-            </View>
-            <View>
-              <Button
+            {/* <Button
                 containerStyle={styles.buttonContainer}
                 buttonStyle={styles.buttonStyle}
                 // loading={this.state.buttonLoading}
@@ -210,24 +226,23 @@ export default class signupScreen extends Component {
                   () => this.handleValidate()
               
                 }
-              />
-            </View>
-            <View
-              style={{
-                alignSelf: "center",
-                marginTop: 36,
-                flexDirection: "row",
-              }}
-            >
-              <Text style={styles.account1Text}>You Don't have an acount?</Text>
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("Login")}
-              >
-                <Text style={styles.signupText}>Sign in</Text>
-              </TouchableOpacity>
-            </View>
+              /> */}
           </View>
-        </KeyboardAwareScrollView>
+          <View
+            style={{
+              alignSelf: "center",
+              marginTop: 20,
+              flexDirection: "row",
+            }}
+          >
+            <Text style={styles.account1Text}>You Don't have an acount?</Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Login")}
+            >
+              <Text style={styles.signupText}>Sign in</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
@@ -248,7 +263,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "bold",
     alignSelf: "center",
-    marginTop: 30,
+    marginTop: 10,
   },
   inputText: {
     color: "#000",
@@ -264,7 +279,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     // flexDirection: "row",
     marginHorizontal: 16,
-    marginTop: 10,
+    marginTop: 20,
     marginRight: 20,
   },
   datePicker: {
@@ -303,6 +318,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#087407",
     fontWeight: "bold",
+    marginTop: -3,
     // marginLeft: -5,
   },
 });

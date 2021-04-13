@@ -15,7 +15,7 @@ export default class genderScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 2,
+      selected: "",
     };
   }
 
@@ -44,7 +44,7 @@ export default class genderScreen extends Component {
               }
             >
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("Location")}
+                onPress={() => this.props.navigation.navigate("Home")}
               >
                 {this.state.selected == "2" ? (
                   <Image
@@ -73,7 +73,7 @@ export default class genderScreen extends Component {
               }
             >
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("Location")}
+                onPress={() => this.props.navigation.navigate("Home")}
               >
                 {this.state.selected == "3" ? (
                   <Image
@@ -105,7 +105,7 @@ export default class genderScreen extends Component {
             }
           >
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Location")}
+              onPress={() => this.props.navigation.navigate("Home")}
             >
               {this.state.selected == "4" ? (
                 <Image source={global.ASSETS.ACTIVEMALE} style={styles.image} />
@@ -131,7 +131,7 @@ export default class genderScreen extends Component {
             }
           >
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Location")}
+              onPress={() => this.props.navigation.navigate("Home")}
             >
               {this.state.selected == "5" ? (
                 <Image source={global.ASSETS.ACTIVEMALE} style={styles.image} />
@@ -162,9 +162,8 @@ const styles = StyleSheet.create({
   },
   upperContainer: {
     flex: 1,
-    height: 420,
+
     justifyContent: "center",
-    marginTop: -70,
     // backgroundColor: "#000",
   },
   bottomContainer: {
@@ -193,7 +192,7 @@ const styles = StyleSheet.create({
   selectText: {
     fontSize: 26,
     alignSelf: "center",
-    marginTop: 50,
+    marginVertical: 20,
   },
   imageContainer: {
     flexDirection: "row",

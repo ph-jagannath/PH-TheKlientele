@@ -66,7 +66,7 @@ export default class HomeScreen extends Component {
           >
             <TouchableOpacity
               style={styles.menuButton}
-              onPress={() =>this.props.navigation.openDrawer()}
+              onPress={() => this.props.navigation.openDrawer()}
             >
               <Image source={global.ASSETS.MENU} style={styles.menuImage} />
             </TouchableOpacity>
@@ -181,19 +181,21 @@ export default class HomeScreen extends Component {
         <AppIntroSlider
           data={slides}
           renderItem={this._renderItem}
+          style={{ height: 100, marginTop: -70 }}
           // onDone={this._onDone}
           // onSkip={this._onDone}
           // skipLabel="Skip"
           showSkipButton={false}
           showNextButton={false}
           showDoneButton={false}
-          dotStyle={{ backgroundColor: "#fff", marginTop: -600 }}
+          dotClickEnabled={true}
+          dotStyle={{ backgroundColor: "#fff", marginTop: -740 }}
           // dotClickEnabled={true}
           activeDotStyle={{
             backgroundColor: "green",
             height: 10,
             width: 50,
-            marginTop: -600,
+            marginTop: -740,
           }}
         />
       );
@@ -202,7 +204,7 @@ export default class HomeScreen extends Component {
 }
 const styles = StyleSheet.create({
   bgContainer: {
-    // flex: 1,
+    flex: 1,
     width: null,
   },
   image: {
@@ -264,13 +266,14 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   menuButton: {
-    marginTop: -460,
+    marginTop: -410,
     marginHorizontal: 10,
   },
   bottomContainer: {
     // flex: 0.6,
     marginTop: 80,
     marginHorizontal: 20,
+    height: 600,
   },
   selectText: {
     fontSize: 24,
@@ -287,8 +290,8 @@ const styles = StyleSheet.create({
     width: null,
   },
   profileImage: {
-    height: 80,
-    width: 80,
+    height: 90,
+    width: 90,
     resizeMode: "contain",
     alignSelf: "center",
     // marginHorizontal: 30,

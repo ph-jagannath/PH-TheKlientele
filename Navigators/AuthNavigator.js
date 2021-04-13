@@ -5,12 +5,9 @@ import Welcome from "../Screens/Auth/welcomeScreen";
 import Login from "../Screens/Auth/loginScreen";
 import Signup from "../Screens/Auth/signupScreen";
 import Forgot from "../Screens/Auth/forgotScreen";
-
+import Location from "../Screens/Auth/locationScreen";
 import Gender from "../Screens/Auth/genderScreen";
 
-// import VerifyNumber from "./../screens/Auth/VerifyNumber";
-// import WelcomeDacwash from "../screens/Auth/WelcomeDacwash";
-// import AddVehicle from "../screens/Auth/AddVehicle";
 const Stack = createStackNavigator();
 const animateIn = () => {
   Animated.timing(animatePress, {
@@ -22,15 +19,13 @@ const animateIn = () => {
 
 export default function AuthNavigator() {
   return (
-    
-      <Stack.Navigator headerMode="none" initialRouteName="Welcome">
-        <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Forgot" component={Forgot} />
-      
-        
-      </Stack.Navigator>
-   
+    <Stack.Navigator headerMode="none" initialRouteName="Welcome">
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Forgot" component={Forgot} />
+      <Stack.Screen name="Gender" component={Gender} />
+      <Stack.Screen name="Location" component={Location} />
+    </Stack.Navigator>
   );
 }

@@ -11,7 +11,7 @@ import {
 import logo from "../../assets/logo.png";
 import { Button, Input, Overlay, Divider, Icon } from "react-native-elements";
 // import LinearGradient from "react-native-linear-gradient";
-import GradientButton from 'react-native-gradient-buttons';
+import GradientButton from "react-native-gradient-buttons";
 
 // import GradientButton from "react-native-gradient-buttons";
 
@@ -27,11 +27,10 @@ export default class loginScreen extends Component {
     this.state = {
       email: "klienteletest100@mailsac.com",
       password: "12345678",
-      
     };
   }
-   // Validate
-   handleValidate = () => {
+  // Validate
+  handleValidate = () => {
     if (this.state.email == "") {
       Alert.alert("Login Alert", "Please enter e-mail address ");
     } else if (this.state.email !== "") {
@@ -58,92 +57,91 @@ export default class loginScreen extends Component {
   render() {
     return (
       <View style={styles.bgContainer}>
-        <View style={styles.upperContainer}>
-          <ImageBackground
-            source={global.ASSETS.LOGO}
-            style={styles.imageContainer}
-            style={{
-              width: 260,
-              height: 220,
-              resizeMode: "cover",
-              alignSelf: "center",
-              marginTop: 40,
-              backgroundColor: "#087407",
-              // alignSelf: "center",
-            }}
-          ></ImageBackground>
-        </View>
-        <View style={styles.inputContainer}>
-          {/* email container */}
+        <View style={{ flex: 0.75 }}>
+          <View style={styles.upperContainer}>
+            <ImageBackground
+              source={global.ASSETS.LOGO}
+              style={styles.imageContainer}
+              style={{
+                width: 260,
+                height: 220,
+                resizeMode: "cover",
+                alignSelf: "center",
+                marginTop: -20,
+                backgroundColor: "#087407",
+                // alignSelf: "center",
+              }}
+            ></ImageBackground>
+          </View>
+          <View style={styles.inputContainer}>
+            {/* email container */}
 
-          <Input
-            label="Email"
-            labelStyle={styles.labelText}
-            textContentType="emailAddress"
-            inputContainerStyle={styles.inputFiedContainer}
-            keyboardType="email-address"
-            inputStyle={styles.inputText}
-            // onChangeText={(v) => this.setState({ number: v })}
-            value={this.state.email}
-          />
-          <View
-            style={{
-              flexDirection: "row",
-              // justifyContent: "space-between",
-              // marginRight: 30,
-            }}
-          >
             <Input
-              label="Password"
-              secureTextEntry={true}
+              label="Email"
               labelStyle={styles.labelText}
               textContentType="emailAddress"
               inputContainerStyle={styles.inputFiedContainer}
               keyboardType="email-address"
               inputStyle={styles.inputText}
-
               // onChangeText={(v) => this.setState({ number: v })}
-              value={this.state.password}
+              value={this.state.email}
             />
-            <TouchableOpacity>
-              <Image
-                source={global.ASSETS.PASSWORD}
-                style={{
-                  width: 26,
-                  height: 26,
-                  alignSelf: "center",
-                  resizeMode: "contain",
-                  shadowColor: "gray",
-                  marginTop: 28,
-                  marginLeft: -34,
-                }}
+            <View
+              style={{
+                flexDirection: "row",
+                // justifyContent: "space-between",
+                // marginRight: 30,
+              }}
+            >
+              <Input
+                label="Password"
+                secureTextEntry={true}
+                labelStyle={styles.labelText}
+                textContentType="emailAddress"
+                inputContainerStyle={styles.inputFiedContainer}
+                keyboardType="email-address"
+                inputStyle={styles.inputText}
+                // onChangeText={(v) => this.setState({ number: v })}
+                value={this.state.password}
               />
-            </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  source={global.ASSETS.PASSWORD}
+                  style={{
+                    width: 26,
+                    height: 26,
+                    alignSelf: "center",
+                    resizeMode: "contain",
+                    shadowColor: "gray",
+                    marginTop: 28,
+                    marginLeft: -34,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <TouchableOpacity
-          style={styles.forgotText}
-          onPress={() => this.props.navigation.navigate("Forgot")}
-        >
-          <Text style={styles.forgotText}>Forgot Password ?</Text>
-        </TouchableOpacity>
-        <View style={styles.buttonContainer}>
-        <GradientButton
-      style={{ marginTop: 50,alignSelf:"center" }}
-      text="Sign in"
-      textStyle={{ fontSize: 16 }}
-      gradientBegin="#0B9A09"
-      gradientEnd="#087407"
-      gradientDirection="diagonal"
-      height={50}
-      width={300}
-      radius={40}
-      impact
-      impactStyle='Light'
-      onPressAction={() => {this.handleValidate}}
-      // onPress={() => this.props.navigation.navigate("Login")}
-    />
-          {/* <Button
+          <TouchableOpacity
+            style={styles.forgotText}
+            onPress={() => this.props.navigation.navigate("Forgot")}
+          >
+            <Text style={styles.forgotText}>Forgot Password ?</Text>
+          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <GradientButton
+              style={{ marginTop: 50, alignSelf: "center" }}
+              text="Sign in"
+              textStyle={{ fontSize: 16 }}
+              gradientBegin="#0EF700"
+              gradientEnd="#087407"
+              gradientDirection="diagonal"
+              height={50}
+              width={300}
+              radius={26}
+              impact
+              impactStyle="Light"
+              onPressAction={() => this.props.navigation.navigate("Gender")}
+            />
+            {/* <Button
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.buttonStyle}
             // loading={this.state.buttonLoading}
@@ -157,51 +155,50 @@ export default class loginScreen extends Component {
             // }}
             onPress={this.handleValidate}
           /> */}
+          </View>
         </View>
-        <View style={styles.dividerContainer}>
-          <Divider style={styles.divider} />
-          <Text style={styles.orText}>On sign in with</Text>
-          <Divider style={styles.divider} />
-        </View>
-        {/* <View style={styles.signInTextContainer}>
-          <View style={styles.borderContainer}></View>
-          <Text>On sign in with</Text>
-          <View style={styles.borderContainer}></View>
-        </View> */}
-        <View style={styles.facebookContainer}>
-          <TouchableOpacity>
-            <Image
-              source={global.ASSETS.FACEBOOK}
-              style={{
-                width: 46,
-                height: 46,
-                alignSelf: "center",
-                resizeMode: "contain",
-              }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image
-              source={global.ASSETS.GOOGLE}
-              style={{
-                width: 46,
-                height: 46,
-                alignSelf: "center",
-                resizeMode: "contain",
-                shadowColor: "gray",
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{ alignSelf: "center", marginTop: 30, flexDirection: "row" }}
-        >
-          <Text style={styles.accountText}>You Don't have an acount?</Text>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Signup")}
+        <View style={{ flex: 0.25 }}>
+          <View style={styles.dividerContainer}>
+            <Divider style={styles.divider} />
+            <Text style={styles.orText}>On sign in with</Text>
+            <Divider style={styles.divider} />
+          </View>
+
+          <View style={styles.facebookContainer}>
+            <TouchableOpacity>
+              <Image
+                source={global.ASSETS.FACEBOOK}
+                style={{
+                  width: 46,
+                  height: 46,
+                  alignSelf: "center",
+                  resizeMode: "contain",
+                }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image
+                source={global.ASSETS.GOOGLE}
+                style={{
+                  width: 46,
+                  height: 46,
+                  alignSelf: "center",
+                  resizeMode: "contain",
+                  shadowColor: "gray",
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{ alignSelf: "center", marginTop: 30, flexDirection: "row" }}
           >
-            <Text style={styles.signupText}>Sign up</Text>
-          </TouchableOpacity>
+            <Text style={styles.accountText}>You Don't have an acount?</Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Signup")}
+            >
+              <Text style={styles.signupText}>Sign up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -215,7 +212,7 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   upperContainer: {
-    height: 300,
+    height: 240,
     backgroundColor: "#087407",
     borderBottomLeftRadius: 240,
     width: 500,
@@ -330,6 +327,7 @@ const styles = StyleSheet.create({
     color: "#087407",
     fontWeight: "bold",
     marginLeft: -10,
+    marginTop: -3,
   },
   icon1: {
     alignSelf: "center",

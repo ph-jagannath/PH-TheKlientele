@@ -308,7 +308,11 @@ export default class bookingScreen extends Component {
                       </View>
                       <View style={styles.detailsContainer1}>
                         <TouchableOpacity
-                          onPress={() => this.props.navigation.navigate("")}
+                          onPress={() =>
+                            this.props.navigation.navigate(
+                              "bookingDetailScreen"
+                            )
+                          }
                         >
                           <Text style={styles.detailsText1}>View Details</Text>
                         </TouchableOpacity>

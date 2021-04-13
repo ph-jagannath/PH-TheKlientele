@@ -95,7 +95,7 @@ export default class locationScreen extends Component {
           <TouchableOpacity
             style={styles.locationContainer}
             // onPress={this.findCurrentLocation}
-            onPress={() => this.props.navigation.navigate("Home")}
+            onPress={() => this.props.navigation.navigate("User")}
           >
             <View style={styles.locationIconContainer}>
               <Image
