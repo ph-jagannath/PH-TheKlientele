@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image ,Alert} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Input, Overlay, Divider } from "react-native-elements";
 import back from "../../assets/back.png";
@@ -11,6 +11,50 @@ import global from "../../global";
 export default class signupScreen extends Component {
   static navigationOptions = {
     header: null,
+  };
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "test",
+      currency: [{ value: "cbvuy", label: "India" }],
+      email: "kliemteletest100@mailsac.com",
+      password: "12345678",
+  
+      date: "",
+      confirm_Password: "12345678",
+      
+    };
+  }
+  // Validate
+  handleValidate = () => {
+    if (this.state.userName == "") {
+      Alert.alert("Signup Alert", "Please enter  userName");
+     
+  
+    } else if (this.state.email == "") {
+      Alert.alert("Signup Alert", "Please enter e-mail address ");
+    } else if (this.state.email !== "") {
+      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (reg.test(this.state.email) === false) {
+        Alert.alert("Signup Alert", "Invalid e-mail address ");
+      } else if (this.state.password == "") {
+        Alert.alert("Signup Alert", "Please enter password");
+      } else if (this.state.password.length < 6) {
+        Alert.alert(
+          "Signup Alert",
+          "Password field should not be less than 6 characters"
+        );
+      } 
+      else {
+        // Login(this.state);
+        this.handleLogin();
+      }
+    }
+  };
+  handleLogin = () => {
+    // this.setState({ success: true });
+    this.props.navigation.navigate("User");
   };
   render() {
     return (
@@ -162,7 +206,10 @@ export default class signupScreen extends Component {
                 title="Sign in"
                 titleStyle={styles.buttonTitle}
                 TouchableComponent={TouchableOpacity}
-                onPress={() => this.props.navigation.navigate("Gender")}
+                onPress={
+                  () => this.handleValidate()
+              
+                }
               />
             </View>
             <View

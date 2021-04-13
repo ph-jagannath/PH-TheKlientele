@@ -1,11 +1,11 @@
-import React from "react";
+import React  from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { navigationRef, isMountedRef } from "../utils/RootNavigation";
 import AuthNavigator from "./AuthNavigator";
 import UserNavigator from "./UserNavigator";
 
-const [animatePress, setAnimatePress] = useState(new Animated.Value(1));
+// const [animatePress, setAnimatePress] = useState(new Animated.Value(1));
 
 const Tab = createBottomTabNavigator();
 export default function MainNavigator() {
@@ -16,9 +16,8 @@ export default function MainNavigator() {
   }, []);
 
   return (
-    <NavigationContainer ref={navigationRef}>
       <Tab.Navigator
-        initialRouteName="User"
+        initialRouteName="Auth"
         backBehavior="none"
         screenOptions={({ route }) => ({
           tabBarVisible: false,
@@ -29,6 +28,5 @@ export default function MainNavigator() {
         <Tab.Screen name="Auth" component={AuthNavigator} />
         <Tab.Screen name="User" component={UserNavigator} />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }

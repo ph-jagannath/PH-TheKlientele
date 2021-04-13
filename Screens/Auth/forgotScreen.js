@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image, ImageBackground } from "react-native";
+import { Text, StyleSheet, View, Image, ImageBackground,Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Input, Overlay, Divider } from "react-native-elements";
 import back from "../../assets/back.png";
@@ -12,6 +12,25 @@ import { LinearGradient } from "expo-linear-gradient";
 export default class forgotScreen extends Component {
   static navigationOptions = {
     header: null,
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: ""
+    };
+  }
+  // Validate
+  handleValidate = () => {
+    if (this.state.email == "") {
+      Alert.alert("Login Alert", "Please enter e-mail address ");
+    } else if (this.state.email !== "") {
+      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (reg.test(this.state.email) === false) {
+        Alert.alert("Login Alert", "Invalid e-mail address ");
+      } else {
+        this.handleForgot();
+      }
+    }
   };
   render() {
     return (
@@ -71,6 +90,7 @@ export default class forgotScreen extends Component {
             title="Reset Password"
             titleStyle={styles.buttonTitle}
             TouchableComponent={TouchableOpacity}
+            onPress={this.handleValidate}
             // onPress={() => this.props.navigation.navigate("loginScreen")}
           />
         </View>

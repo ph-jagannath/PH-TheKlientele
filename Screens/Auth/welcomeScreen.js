@@ -13,7 +13,7 @@ import { Button } from "react-native-elements";
 import slide from "../../assets/slide-01.png";
 import Carousel from "react-native-banner-carousel";
 import loginScreen from "../../Screens/Auth/loginScreen";
-
+import GradientButton from 'react-native-gradient-buttons';
 import global from "../../global";
 
 const BannerWidth = Dimensions.get("window").width;
@@ -63,15 +63,21 @@ export default class welcomeScreen extends Component {
           <Text style={styles.bottomText}>Package that fit your lifestyle</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Button
-            // containerStyle={styles.buttonContainer}
-            buttonStyle={styles.buttonStyle}
-            // loading={this.state.buttonLoading}
-            title="Get Started"
-            titleStyle={styles.buttonTitle}
-            TouchableComponent={TouchableOpacity}
-            onPress={() => this.props.navigation.navigate("Login")}
-          />
+        <GradientButton
+      style={{ marginTop: 80 }}
+      text="Get Started"
+      textStyle={{ fontSize: 16 }}
+      gradientBegin="#0B9A09"
+      gradientEnd="#087407"
+      gradientDirection="diagonal"
+      height={50}
+      width={300}
+      radius={40}
+      impact
+      impactStyle='Light'
+      onPressAction={() => this.props.navigation.navigate("Login")}
+      // onPress={() => this.props.navigation.navigate("Login")}
+    />
         </View>
       </View>
     );

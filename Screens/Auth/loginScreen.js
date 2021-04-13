@@ -6,10 +6,12 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 import logo from "../../assets/logo.png";
 import { Button, Input, Overlay, Divider, Icon } from "react-native-elements";
-import LinearGradient from "react-native-linear-gradient";
+// import LinearGradient from "react-native-linear-gradient";
+import GradientButton from 'react-native-gradient-buttons';
 
 // import GradientButton from "react-native-gradient-buttons";
 
@@ -18,6 +20,40 @@ import global from "../../global";
 export default class loginScreen extends Component {
   static navigationOptions = {
     header: null,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "klienteletest100@mailsac.com",
+      password: "12345678",
+      
+    };
+  }
+   // Validate
+   handleValidate = () => {
+    if (this.state.email == "") {
+      Alert.alert("Login Alert", "Please enter e-mail address ");
+    } else if (this.state.email !== "") {
+      let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (reg.test(this.state.email) === false) {
+        Alert.alert("Login Alert", "Invalid e-mail address ");
+      } else if (this.state.password == "") {
+        Alert.alert("Login Alert", "Please enter password");
+      } else if (this.state.password.length < 6) {
+        Alert.alert(
+          "Login Alert",
+          "Password field should not be less than 6 characters"
+        );
+      } else {
+        // Login(this.state);
+        this.handleLogin();
+      }
+    }
+  };
+  handleLogin = () => {
+    // this.setState({ success: true });
+    this.props.navigation.navigate("User");
   };
   render() {
     return (
@@ -48,7 +84,7 @@ export default class loginScreen extends Component {
             keyboardType="email-address"
             inputStyle={styles.inputText}
             // onChangeText={(v) => this.setState({ number: v })}
-            // value={this.state.number}
+            value={this.state.email}
           />
           <View
             style={{
@@ -67,7 +103,7 @@ export default class loginScreen extends Component {
               inputStyle={styles.inputText}
 
               // onChangeText={(v) => this.setState({ number: v })}
-              // value={this.state.number}
+              value={this.state.password}
             />
             <TouchableOpacity>
               <Image
@@ -91,8 +127,23 @@ export default class loginScreen extends Component {
         >
           <Text style={styles.forgotText}>Forgot Password ?</Text>
         </TouchableOpacity>
-        <View>
-          <Button
+        <View style={styles.buttonContainer}>
+        <GradientButton
+      style={{ marginTop: 50,alignSelf:"center" }}
+      text="Sign in"
+      textStyle={{ fontSize: 16 }}
+      gradientBegin="#0B9A09"
+      gradientEnd="#087407"
+      gradientDirection="diagonal"
+      height={50}
+      width={300}
+      radius={40}
+      impact
+      impactStyle='Light'
+      onPressAction={() => {this.handleValidate}}
+      // onPress={() => this.props.navigation.navigate("Login")}
+    />
+          {/* <Button
             containerStyle={styles.buttonContainer}
             buttonStyle={styles.buttonStyle}
             // loading={this.state.buttonLoading}
@@ -104,8 +155,8 @@ export default class loginScreen extends Component {
             //   start: { x: 0, y: 0.1 },
             //   end: { x: 1, y: 0.5 },
             // }}
-            onPress={() => this.props.navigation.navigate("Gender")}
-          />
+            onPress={this.handleValidate}
+          /> */}
         </View>
         <View style={styles.dividerContainer}>
           <Divider style={styles.divider} />
@@ -211,12 +262,12 @@ const styles = StyleSheet.create({
     // fontFamily: global.FONT.LIGHT,
   },
   buttonContainer: {
-    width: 320,
+    // width: 320,
     justifyContent: "center",
     // alignContent: "center"
     alignSelf: "center",
     alignItems: "center",
-    marginTop: 40,
+    // marginTop: 40,
   },
   buttonStyle: {
     backgroundColor: "green",

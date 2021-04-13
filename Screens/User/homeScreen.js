@@ -66,7 +66,7 @@ export default class HomeScreen extends Component {
           >
             <TouchableOpacity
               style={styles.menuButton}
-              onPress={() => this.props.navigation.navigate("Drawer")}
+              onPress={() =>this.props.navigation.openDrawer()}
             >
               <Image source={global.ASSETS.MENU} style={styles.menuImage} />
             </TouchableOpacity>
